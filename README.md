@@ -9,5 +9,5 @@ Updated: 6 September 2021
 
 
 1. Stata dta and do files with 'cpii' prefix contain panel data and code to produce Corporate Political Influence Index (using SEM latent factor analysis).
-2. The csv file contains the Corporate Political Influence Index (CPII).
+2. The xls file contains the Corporate Political Influence Index (CPII).
 3. Stata dta and do files with 'comm' prefix contain panel data and code to produce all regression results.
