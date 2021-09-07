@@ -5,7 +5,7 @@ Authors: Luke Allen, Simon Wigley, and Hampus Holmer
 
 Updated: 6 September 2021
 
-Data and code not to be used or cited without permission of authors
+*Data and code not to be used or cited without permission of authors*
 
 
 1. Stata dta and do files with 'cpii' prefix contain panel data and code to produce Corporate Political Influence Index (using SEM latent factor analysis).
