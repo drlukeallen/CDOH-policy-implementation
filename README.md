@@ -5,7 +5,7 @@
 
 **_Social Science & Medicine_ (forthcoming)**
 
-This folder contains the data and code reproducing the entire analysis for our Social Science & Medicine paper.
+This folder contains the data and code reproducing the entire analysis for our_ Social Science & Medicine_ paper.
 
 Updated: 25 January 2022
 
