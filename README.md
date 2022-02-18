@@ -2,6 +2,7 @@
 Data and replication code for  “Assessing the association between corporate financial influence and implementation of policies to tackle commercial determinants of non-communicable diseases: a cross-sectional analysis of 172 countries”
 
 Authors: Luke Allen, Simon Wigley, and Hampus Holmer
+Journal: Social Science & Medicine
 
 Updated: 6 September 2021
 
