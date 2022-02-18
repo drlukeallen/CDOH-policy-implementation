@@ -5,7 +5,7 @@ Authors: Luke Allen, Simon Wigley, and Hampus Holmer
 
 Journal: Social Science & Medicine
 
-Updated: 6 September 2021
+Updated: 25 January 2022
 
 *Data and code not to be used or cited without permission of authors*
 
