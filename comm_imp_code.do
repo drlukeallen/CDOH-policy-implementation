@@ -4,7 +4,9 @@
 **** commercial determinants of non-communicable diseases: a cross-sectional analysis of 172 countries"                                                           ****
 **** Journal: Social Science & Medicine                                                                                                                           ****
 **** Authors: Luke Allen, Simon Wigley, and Hampus Holmer                                                                                                         ****
+
 **** Updated: 25 January 2022                                                                                                                                     ****
+
 **** Data and code not to be used or cited without permission of the authors                                                                                      ****
 
 set more off
@@ -14,13 +16,10 @@ clear
 use "comm_imp_panel.dta" 
 xtset country1 year
 
-
-
 ***Stata version 14.2***
 ssc install center, replace
 ssc install coefplot, replace
 ssc install estout, replace
-
 
 ***PRESERVE ORIGINAL***
 preserve
