@@ -1,6 +1,11 @@
-**** Replication code for regression analyses for "Commercial NCD policies and Corporate Political Influence from 2015 to 2020"                                   ****
-**** Authors: Luke Allen, Hampus Holmer, and Simon Wigley                                                                                                         ****
-**** Updated: 5 September 2021                                                                                                                                    ****
+**** Replication code for constructing Corporate Financial Influence Index                                                                                        ****
+
+**** Article: "Assessing the association between corporate financial influence and implementation of policies to tackle                                           ****
+**** commercial determinants of non-communicable diseases: a cross-sectional analysis of 172 countries"                                                           ****
+**** Journal: Social Science & Medicine                                                                                                                           ****
+**** Authors: Luke Allen, Simon Wigley, and Hampus Holmer                                                                                                         ****
+
+**** Updated: 25 January 2022                                                                                                                                     ****
 **** Data and code not to be used or cited without permission of the authors                                                                                      ****
 
 set more off
@@ -13,7 +18,7 @@ ssc install heatplot, replace
 ssc install palettes, replace
 ssc install colrspace, replace
 
-use "cpii_inputs_panel.dta" 
+use "cfii_inputs_panel.dta" 
 xtset country1 year
 
 ***Input summary statistics (excluding micro states)*** 
@@ -34,7 +39,7 @@ matrix C = r(C)
 heatplot C, values(format(%9.3f)) color(hcl, diverging intensity(.6)) legend(off) aspectratio(1) lower nodiagonal  ylabel( ,labsize(vsmall)) xlabel( ,labsize(vsmall))
 
 ***Estimate latent using SEM (mlmv)***
-sem (CPII -> v2eldonate, ) (CPII -> v2elpubfin, ) (CPII -> idea_privfin_narrow, ) (CPII -> disc, ) (CPII -> v2lgcrrpt, ) (CPII -> v2lgotovst, ), method(mlmv) standardized latent(CPII ) ///
+sem (CFII -> v2eldonate, ) (CFII -> v2elpubfin, ) (CFII -> idea_privfin_narrow, ) (CFII -> disc, ) (CFII -> v2lgcrrpt, ) (CFII -> v2lgotovst, ), method(mlmv) standardized latent(CFII ) ///
 cov(e.v2lgcrrpt*e.v2lgotovst e.idea_privfin_narrow*e.v2eldonate e.idea_privfin_narrow*e.v2lgotovst e.idea_privfin_narrow*e.v2lgcrrpt e.disc*e.v2lgotovst) nocapslatent
 
 ***Equation-level goodness of fit***
@@ -44,41 +49,44 @@ estat eqgof
 estat gof, stats(all)
 
 ***Predict***
-predict cpii_panel, latent(CPII)
+predict cfii_panel, latent(CFII)
 
 ***Invert***
-egen max_cpii = max(cpii_panel)
-gen cpii_panel_inv = max_cpii-cpii_panel
+egen max_cfii = max(cfii_panel)
+gen cfii_panel_inv = max_cfii-cfii_panel
 
 ***Rescale 0-100***
-egen max_cpii_inv = max(cpii_panel_inv)
-gen cpii_panel_inv_100 = (cpii_panel_inv/max_cpii_inv)*100
+egen max_cfii_inv = max(cfii_panel_inv)
+gen cfii_panel_inv_100 = (cfii_panel_inv/max_cfii_inv)*100
 
 ***Estimate latent using SEM (mlmv) (w/ lobbying disclosure)***
-sem (CPII_lobby -> v2eldonate, ) (CPII_lobby -> v2elpubfin, ) (CPII_lobby -> idea_privfin_narrow, ) (CPII_lobby -> disc, ) (CPII_lobby -> v2lgcrrpt, ) (CPII_lobby -> v2lgotovst, ) ///
-(CPII_lobby -> idea_oecd_bin, ), method(mlmv) standardized latent(CPII_lobby ) cov( e.idea_privfin_narrow*e.v2eldonate e.v2lgcrrpt*e.v2eldonate e.v2lgcrrpt*e.idea_privfin_narrow e.v2lgcrrpt*e.disc e.v2lgotovst*e.v2eldonate ///
+sem (CFII_lobby -> v2eldonate, ) (CFII_lobby -> v2elpubfin, ) (CFII_lobby -> idea_privfin_narrow, ) (CFII_lobby -> disc, ) (CFII_lobby -> v2lgcrrpt, ) (CFII_lobby -> v2lgotovst, ) ///
+(CFII_lobby -> idea_oecd_bin, ), method(mlmv) standardized latent(CFII_lobby ) cov( e.idea_privfin_narrow*e.v2eldonate e.v2lgcrrpt*e.v2eldonate e.v2lgcrrpt*e.idea_privfin_narrow e.v2lgcrrpt*e.disc e.v2lgotovst*e.v2eldonate ///
 e.v2lgotovst*e.v2elpubfin e.v2lgotovst*e.idea_privfin_narrow e.v2lgotovst*e.disc e.v2lgotovst*e.v2lgcrrpt e.idea_oecd_bin*e.idea_privfin_narrow e.idea_oecd_bin*e.v2lgcrrpt) nocapslatent
 
 ***Predict***
-predict cpii_panel_lobby_bin, latent(CPII_lobby)
+predict cfii_panel_lobby_bin, latent(CFII_lobby)
 
 ***Invert***
-egen max_cpii_lobby = max(cpii_panel_lobby_bin)
-gen cpii_panel_lobby_bin_inv = max_cpii_lobby-cpii_panel_lobby_bin
+egen max_cfii_lobby = max(cfii_panel_lobby_bin)
+gen cfii_panel_lobby_bin_inv = max_cfii_lobby-cfii_panel_lobby_bin
 
 ***Estimate latent using SEM (mlmv) (w/o disclosure)***
-sem (CPII_wodisc -> v2eldonate, ) (CPII_wodisc -> v2elpubfin, ) (CPII_wodisc -> idea_privfin_narrow, ) (CPII_wodisc -> v2lgcrrpt, ) (CPII_wodisc -> v2lgotovst, ), method(mlmv) standardized latent(CPII_wodisc ) ///
+sem (CFII_wodisc -> v2eldonate, ) (CFII_wodisc -> v2elpubfin, ) (CFII_wodisc -> idea_privfin_narrow, ) (CFII_wodisc -> v2lgcrrpt, ) (CFII_wodisc -> v2lgotovst, ), method(mlmv) standardized latent(CFII_wodisc ) ///
 cov( e.idea_privfin_narrow*e.v2eldonate e.v2lgcrrpt*e.v2eldonate e.v2lgcrrpt*e.idea_privfin_narrow e.v2lgotovst*e.v2eldonate e.v2lgotovst*e.idea_privfin_narrow e.v2lgotovst*e.v2lgcrrpt) nocapslatent
 
 ***Predict***
-predict cpii_panel_wodisc, latent(CPII_wodisc)
+predict cfii_panel_wodisc, latent(CFII_wodisc)
 
 ***Invert***
-egen max_cpii_wodisc = max(cpii_panel_wodisc)
-gen cpii_panel_wodisc_inv = max_cpii_wodisc-cpii_panel_wodisc
+egen max_cfii_wodisc = max(cfii_panel_wodisc)
+gen cfii_panel_wodisc_inv = max_cfii_wodisc-cfii_panel_wodisc
 
 ***Export results**
-export excel country iso3 year cpii_panel_inv  cpii_panel_inv_100 cpii_panel_lobby_bin_inv cpii_panel_wodisc_inv using "cpii_sem_results", firstrow(variables) replace
+export excel country iso3 year cfii_panel_inv  cfii_panel_inv_100 cfii_panel_lobby_bin_inv cfii_panel_wodisc_inv using "cfii_sem_results", firstrow(variables) replace
+
+***Corporate Financial Influence in 2015 and 2019***
+tw (scatter cfii_panel_inv_100  L4.cfii_panel_inv_100 if year==2019,  mlabel(iso3) mlabsize(tiny) msym(oh) ytitle("CFII 2019") xtitle("CFII 2015") legend(off)) (line cfii_panel_inv_100 cfii_panel_inv_100)
 
 
 exit
