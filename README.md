@@ -1,5 +1,5 @@
 # CDOH-policy-implementation
-**Assessing the association between -Corporate Financial Influence- and implementation of policies to tackle commercial determinants of non-communicable diseases: a cross-sectional analysis of 172 countries**
+**Assessing the association between _Corporate Financial Influence_ and implementation of policies to tackle commercial determinants of non-communicable diseases: a cross-sectional analysis of 172 countries**
 
 **By Luke Allen, Simon Wigley, and Hampus Holmer**
 
