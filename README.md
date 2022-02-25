@@ -12,6 +12,6 @@ Updated: 25 January 2022
 *Data and code not to be used or cited without permission of authors*
 
 
-1. Stata dta and do files with 'cfii' prefix contain panel data and code to produce Corporate Financial Influence Index (using SEM latent factor analysis).
-2. The xls file contains the Corporate Financial Influence Index (CFII).
+1. Stata dta and do files with 'cfii' prefix contain panel data and code to produce the _Corporate Financial Influence Index_ (using SEM latent factor analysis).
+2. The xls file contains the _Corporate Financial Influence Index_ (CFII).
 3. Stata dta and do files with 'comm' prefix contain panel data and code to produce all regression results.
