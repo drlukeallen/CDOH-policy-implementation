@@ -5,7 +5,7 @@
 
 [**_Social Science & Medicine_ (forthcoming)**](https://doi.org/10.1016/j.socscimed.2022.114825)
 
-This folder contains the data and code reproducing the entire analysis for our _Social Science & Medicine_ paper.
+This folder contains the data and code reproducing the entire analysis for our _Social Science & Medicine_ article.
 
 Updated: 25 January 2022
 
