@@ -3,7 +3,7 @@
 
 **By Luke Allen, Simon Wigley, and Hampus Holmer**
 
-[**Social Science & Medicine, 297(114825), 2022**](https://doi.org/10.1016/j.socscimed.2022.114825)
+[**_Social Science & Medicine_, 297(114825), 2022**](https://doi.org/10.1016/j.socscimed.2022.114825)
 
 This folder contains the data and code reproducing the entire analysis for our _Social Science & Medicine_ article.
 
